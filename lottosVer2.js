@@ -23,6 +23,10 @@ let latest5noneUse = [];
 let candidate = [];
 let hopeLottos = [];
 
+// Dom
+
+let $lists = document.querySelectorAll(".numberList li");
+
 // 당첨횟수 구하기
 
 const findNumberOfWins = (times) => {
@@ -276,3 +280,22 @@ pickedNumber(5, candidate, 40, 45);
 pickedNumber(6, candidate, 1, 45);
 
 hopeLottos.sort((a, b) => a - b);
+
+hopeLottos.forEach((number, i) => {
+  if (number >= 1 && number < 10) {
+    $lists[i].className = "yellow";
+    $lists[i].firstChild.textContent = number;
+  } else if (number >= 10 && number < 20) {
+    $lists[i].className = "blue";
+    $lists[i].firstChild.textContent = number;
+  } else if (number >= 20 && number < 30) {
+    $lists[i].className = "red";
+    $lists[i].firstChild.textContent = number;
+  } else if (number >= 30 && number < 40) {
+    $lists[i].className = "gray";
+    $lists[i].firstChild.textContent = number;
+  } else if (number >= 40 && number <= 45) {
+    $lists[i].className = "green";
+    $lists[i].firstChild.textContent = number;
+  }
+});
