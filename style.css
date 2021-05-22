@@ -1,5 +1,6 @@
 html {
   font-size: 10px;
+  font-family: "Noto Sans KR", sans-serif;
 }
 h1,
 h2,
@@ -107,7 +108,7 @@ main {
   width: 6.4rem;
   height: 6.4rem;
   margin: 0.8rem;
-  padding: 1.9rem 1.6rem 1.6rem 1.6rem;
+  padding: 1.3rem 1.6rem 1.6rem 1.6rem;
   font-size: 2.4rem;
   text-align: center;
   color: #fff;
@@ -181,7 +182,7 @@ main {
     font-weight: 500;
   }
   main {
-    width: 95vw;
+    width: 100vw;
     height: 18rem;
   }
   .numberList {
@@ -192,7 +193,7 @@ main {
     width: 4.4rem;
     height: 4.4rem;
     margin: 0.4rem;
-    padding: 1.2rem 1.2rem 0.8rem 1.2rem;
+    padding: 0.6rem 0.8rem;
     font-size: 2rem;
     border-radius: 2.2rem;
   }
