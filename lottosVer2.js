@@ -1,6 +1,7 @@
 // data
 
 let lottos = [
+  { id: 964, numbers: [6, 21, 36, 38, 39, 43] },
   { id: 963, numbers: [6, 12, 19, 23, 34, 42] },
   { id: 962, numbers: [1, 18, 28, 31, 34, 43] },
   { id: 961, numbers: [11, 20, 29, 31, 33, 42] },
@@ -12,6 +13,10 @@ let lottos = [
   { id: 955, numbers: [4, 9, 23, 26, 29, 33] },
   { id: 954, numbers: [1, 9, 26, 28, 30, 41] },
   { id: 953, numbers: [7, 9, 22, 27, 37, 42] },
+  { id: 952, numbers: [4, 12, 22, 24, 33, 41] },
+  { id: 951, numbers: [2, 12, 30, 31, 39, 43] },
+  { id: 950, numbers: [3, 4, 15, 22, 28, 40] },
+  { id: 949, numbers: [14, 21, 35, 36, 40, 44] },
 ];
 
 let totalLast5 = [];
@@ -226,7 +231,7 @@ const findNumberOfWins = (times) => {
 };
 
 totalLast5 = findNumberOfWins(5);
-totalLast10 = findNumberOfWins(10);
+totalLast10 = findNumberOfWins(15);
 
 // 최근 5회차 당첨 안된 번호 & 당첨 번호
 totalLast5.forEach((times, i) => {
