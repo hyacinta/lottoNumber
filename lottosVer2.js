@@ -1,6 +1,16 @@
+// Dom
+
+let $lists = document.querySelectorAll(".numberList li");
+let $updateText = document.querySelector(".updateText");
+
+console.log($updateText);
+
+$updateText.textContent += "2021.06.07";
+
 // data
 
 let lottos = [
+  { id: 966, numbers: [1, 21, 25, 29, 34, 37] },
   { id: 965, numbers: [2, 13, 25, 28, 29, 36] },
   { id: 964, numbers: [6, 21, 36, 38, 39, 43] },
   { id: 963, numbers: [6, 12, 19, 23, 34, 42] },
@@ -28,10 +38,6 @@ let latest5noneUse = [];
 
 let candidate = [];
 let hopeLottos = [];
-
-// Dom
-
-let $lists = document.querySelectorAll(".numberList li");
 
 // 당첨횟수 구하기
 
