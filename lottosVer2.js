@@ -243,9 +243,11 @@ const pickedNumber = (length, arr, min, max) => {
 pickedNumber(1, candidate, 1, 9);
 pickedNumber(2, candidate, 10, 19);
 pickedNumber(3, candidate, 20, 29);
-pickedNumber(4, candidate, 30, 39);
-pickedNumber(5, candidate, 40, 45);
-pickedNumber(6, candidate, 1, 45);
+pickedNumber(6, candidate, 10, 45);
+// pickedNumber(3, candidate, 20, 29);
+// pickedNumber(4, candidate, 30, 39);
+// pickedNumber(5, candidate, 40, 45);
+// pickedNumber(6, candidate, 1, 45);
 
 hopeLottos.sort((a, b) => a - b);
 
