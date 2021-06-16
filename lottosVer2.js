@@ -3,13 +3,12 @@
 let $lists = document.querySelectorAll(".numberList li");
 let $updateText = document.querySelector(".updateText");
 
-console.log($updateText);
-
-$updateText.textContent += "2021.06.07";
+$updateText.textContent += "2021.06.14";
 
 // data
 
 let lottos = [
+  { id: 967, numbers: [1, 6, 13, 37, 38, 40] },
   { id: 966, numbers: [1, 21, 25, 29, 34, 37] },
   { id: 965, numbers: [2, 13, 25, 28, 29, 36] },
   { id: 964, numbers: [6, 21, 36, 38, 39, 43] },
@@ -38,6 +37,8 @@ let latest5noneUse = [];
 
 let candidate = [];
 let hopeLottos = [];
+
+let lottoNumbersCount = [0, 0, 0, 0, 0];
 
 // 당첨횟수 구하기
 
@@ -230,24 +231,24 @@ candidate = [...candidate, ...setB.difference(setA)];
 // 번호 6개 추출하기
 
 const pickedNumber = (length, arr, min, max) => {
-  while (hopeLottos.length < length) {
+  const returnArr = [];
+
+  while (returnArr.length < length) {
     const randomNumber = Math.floor(Math.random() * (max - min) + min);
 
     let hopeNumber = arr.filter((item) => item === randomNumber);
-    !hopeLottos.includes(...hopeNumber)
-      ? [hopeLottos.push(...hopeNumber)]
+    !returnArr.includes(...hopeNumber)
+      ? [returnArr.push(...hopeNumber)]
       : undefined;
   }
+
+  return returnArr;
 };
 
-pickedNumber(1, candidate, 1, 9);
-pickedNumber(2, candidate, 10, 19);
-pickedNumber(3, candidate, 20, 29);
-pickedNumber(6, candidate, 10, 45);
-// pickedNumber(3, candidate, 20, 29);
-// pickedNumber(4, candidate, 30, 39);
-// pickedNumber(5, candidate, 40, 45);
-// pickedNumber(6, candidate, 1, 45);
+hopeLottos = pickedNumber(1, candidate, 1, 9);
+hopeLottos = [...hopeLottos, ...pickedNumber(1, candidate, 10, 19)];
+hopeLottos = [...hopeLottos, ...pickedNumber(1, candidate, 20, 29)];
+hopeLottos = [...hopeLottos, ...pickedNumber(3, candidate, 10, 45)];
 
 hopeLottos.sort((a, b) => a - b);
 
