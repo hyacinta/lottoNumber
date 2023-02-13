@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lotto</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="wrap">
-      <main>
-        <h1 class="h1">예상번호</h1>
-        <p class="updateText">LAST UPDATE : </p>
-        <ul class="numberList">
-          <li class="yellow"><span>1</span></li>
-          <li class="yellow"><span>10</span></li>
-          <li class="yellow"><span>20</span></li>
-          <li class="yellow"><span>30</span></li>
-          <li class="yellow"><span>40</span></li>
-          <li class="yellow"><span>40</span></li>
-        </ul>
-        <!-- <button type="button" class="btnCreateNumber">번호 생성</button> -->
-      </main>
-    </div>
-    <script src="lottosVer2.js" defer></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width= , initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./jquery3.3.1.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <input type="text" placeholder="통계수" id="statistics" name="statistics" class="statistics">
+    <input type="text" placeholder="제외수" id="except" name="except" class="except">
+    <input type="text" placeholder="이월수" id="must" name="must" class="must">
+    <select id="jumpCol" name="jumpCol" class="jumpCol">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+    </select>
+    <select id="jumpRow" name="jumpRow" class="jumpRow">
+      <option>1</option>
+      <option>8</option>
+      <option>15</option>
+      <option>22</option>
+      <option>29</option>
+      <option>36</option>
+      <option>43</option>
+    </select>
+
+    <button type="button" class="confirmBtn" >번호 확인</button>
+
+    <ul class="numberList">
+    </ul>
+  </div>
+  
+  
+
+
+
+  <script src="./common.js"></script>
+</body>
+
 </html>
