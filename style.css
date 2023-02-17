@@ -27,9 +27,10 @@ html {
   text-align: center;
   overflow: hidden;
 }
-input, select {
+input, .jumpRow, .jumpCol {
   display: block;
   width: 50rem;
+  min-height: 3.6rem;
   margin: 1.6rem auto;
   padding: 0.5em;
   border: 1px solid #aaa;

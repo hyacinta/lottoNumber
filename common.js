@@ -5,39 +5,27 @@ const allNumber = [
 ];
 
 $(".confirmBtn").on("click", function () {
-  // data
-  let hopeLottos = [];
-  let targetNumber = [];
-
   // 입력 값 가져오기
-  const statisticsNumber = $("#statistics")
-    .val()
-    .split(" ")
-    .map((i) => i * 1); // 통계수
-  const exceptNumber = $("#except")
-    .val()
-    .split(" ")
-    .map((i) => i * 1); // 제외수
-  const mustNumber = $("#must")
-    .val()
-    .split(" ")
-    .map((i) => i * 1); // 이월수
-  const jumpNumberCol = $("#jumpCol")
-    .val()
-    .split(", ")
-    .map((i) => i * 1); // 전멸수 가로
-  const jumpNumberRow = $("#jumpRow")
-    .val()
-    .split(", ")
-    .map((i) => i * 1); // 전멸수 세로
 
-  console.log(jumpNumberCol);
-  console.log(jumpNumberRow);
-  console.log(makeTargetNumber(), "타겟넘버");
+  // 제외수 : 타겟 번호에서 무조건 빠짐
+  const exceptNumber = textToArr("#except");
 
-  targetNumber = [...new Set(makeTargetNumber(jumpNumberCol, jumpNumberRow))];
-  pickedNumber(6, targetNumber);
-  hopeLottos.sort((a, b) => a - b);
+  // 전멸수 가로 : 타겟 번호에서 무조건 빠짐
+  const jumpNumberCol = textToArr("#jumpCol");
+
+  // 전멸수 세로 : 타겟 번호에서 무조건 빠짐
+  const jumpNumberRow = textToArr("#jumpRow");
+
+  // 전멸수 : 타겟 번호에서 무조건 빠짐
+  const jumpNumbers = makeJumpArr(Number($("#jump").val()));
+
+  // 통계수 : 타겟 번호에 무조건 들어감
+  const statisticsNumber = textToArr("#statistics");
+
+  // 이월수 : 최종 번호에 무조건 들어감
+  const mustNumber = textToArr("#must");
+
+  const hopeLottos = pickedNumbers(6, makeTargetNumber(), mustNumber);
 
   // ui 생성
   $(".numberList").html(
@@ -61,24 +49,49 @@ $(".confirmBtn").on("click", function () {
   );
 
   // 기능 함수
+  function textToArr(input) {
+    return $(input)
+      .val()
+      .split(" ")
+      .map((i) => i * 1);
+  }
+
+  function makeJumpArr(jumpNum) {
+    if (jumpNum === 0) return [0];
+    const tempArr = [];
+    while (tempArr.length < 10) {
+      tempArr.push(jumpNum);
+      jumpNum++;
+    }
+
+    return tempArr;
+  }
+
   function makeTargetNumber() {
     return allNumber
-      .filter((i) => !exceptNumber.includes(i))
-      .filter((i) => !jumpNumberCol.includes(i))
-      .filter((i) => !jumpNumberRow.includes(i))
+      .filter(
+        (i) =>
+          ![
+            ...exceptNumber,
+            ...jumpNumberCol,
+            ...jumpNumberRow,
+            ...jumpNumbers,
+          ].includes(i)
+      )
       .concat(statisticsNumber)
       .filter((i) => i !== 0)
       .sort((a, b) => a - b);
   }
 
-  function pickedNumber(length, arr) {
-    hopeLottos = mustNumber[0] !== 0 ? mustNumber : [];
-    while (hopeLottos.length < length) {
-      const randomNumber = Math.floor(Math.random() * 45 + 1);
-      let hopeNumber = arr.filter((item) => item === randomNumber);
-      !hopeLottos.includes(...hopeNumber)
-        ? [hopeLottos.push(...hopeNumber)]
-        : undefined;
+  function pickedNumbers(length, arr, must) {
+    let tempArr = must[0] === 0 ? [] : [...must];
+    while (tempArr.length < length) {
+      const randomNum = Math.floor(Math.random() * 45 + 1);
+      let hopeNum = arr.filter((item) => item === randomNum);
+      if (tempArr.includes(...hopeNum)) continue;
+      tempArr.push(...hopeNum);
     }
+
+    return tempArr.sort((a, b) => a - b);
   }
 });
